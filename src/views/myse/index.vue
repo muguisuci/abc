@@ -7,7 +7,7 @@
           </div>
     </van-sticky>
     
-    <div class="bg-[#fff] dark:bg-[#151515] w-[90vw] h-[20vw] ml-[4vw] flex flex-col items-center rounded-[20px] mb-[3vw] " v-if="this.auth!=null">
+    <div class="bg-[#fff] dark:bg-[#151515] w-[90vw] h-[20vw] ml-[4vw] flex flex-col items-center rounded-[20px] mb-[3vw] " v-show="!this.auth.anonimousUser">
       <div class="mt-[-10vw]"> 
         <img :src="numes.data.profile.avatarUrl" alt="" v-if="numes.data" class="w-[20vw] h-[20vw] rounded-[50%]">
       </div>
@@ -24,15 +24,15 @@
 
 
 
-    <div class="bg-[#fff] dark:bg-[#151515] w-[90vw] h-[20vw] ml-[4vw] flex flex-col items-center rounded-[20px] mb-[3vw]" v-else>
+    <div class="bg-[#fff] dark:bg-[#151515] w-[90vw] h-[20vw] ml-[4vw] flex flex-col items-center rounded-[20px] mb-[3vw] " v-show="this.auth.anonimousUser">
       <div class="mt-[-10vw] w-[20vw] h-[20vw] rounded-[50%] bg-[#fff]"> 
         <Icon icon="solar:user-circle-bold-duotone" color="#f9dada" class="text-[20vw]"/>
       </div>
       <div class="w-[90vw] h-[10vw]"></div>
-      <div class=" text-[3vw] text-center ml-[15vw]  w-[60vw]">
+      <div class=" text-[3vw] text-center  w-[60vw]">
         <span>立即登录</span>
       </div>
-      <div class="h-[3vw] text-[2vw] text-center ml-[30vw] flex justify-between items-center text-[#999] w-[30vw] ">
+      <div class="h-[3vw] text-[2vw] text-center flex justify-between items-center text-[#999] w-[30vw] ">
         <span>0关注</span>|
         <span>0 粉丝</span>|
         <span>Lv.0</span>
@@ -183,7 +183,6 @@ export default {
   computed:{...mapState(["auth"])},
   created(){
     // console.log(this.auth==null);
-    if(this.auth!=null){
       // console.log(this.auth.account.id);
     getUserdetail({ uid:this.auth.account.id})
      .then((res)=>{
@@ -212,7 +211,6 @@ export default {
       .catch((err)=>{
         console.log(err);
      })
-    }
    
   },
 

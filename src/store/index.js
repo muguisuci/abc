@@ -29,7 +29,7 @@ const store = new Vuex.Store({
         },
         deleteCachedData(state) {
             if (confirm('确定退出吗？')) {
-                state.auth =null;
+                state.auth.anonimousUser =true;
                 state.numes =null;
                 state.newseses =null;
                 state.newses =null;

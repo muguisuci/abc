@@ -3,7 +3,7 @@ import axios from "axios";
 import axiosRetry from "axios-retry";
 // 返回值是一个新的axios的实例
 const request=axios.create({
-    baseURL:'http://localhost:3000',
+    baseURL:'http://111.229.247.11:3000',
     timeout:3000,
     withCredentials: true,
 })
@@ -27,19 +27,6 @@ request.interceptors.request.use((config)=>{
             }
         })[config.method]()
 
-
-
-
-
-
-        // if (config.method == "post") {
-        //     config.params ||(config.params={})
-        //     config.data.cookie = 'xyz'
-        // }
-        // if (config.method == "get") {
-        //     config.params ||(config.params={})
-        //     config.params.cookie = 'xyz'
-        // }
     }
     
 
