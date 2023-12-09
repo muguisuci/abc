@@ -3,7 +3,7 @@ import axios from "axios";
 import axiosRetry from "axios-retry";
 // 返回值是一个新的axios的实例
 const request=axios.create({
-    baseURL:'http://111.229.247.11:3000',
+    baseURL:'http://localhost:3000',
     timeout:3000,
     withCredentials: true,
 })
