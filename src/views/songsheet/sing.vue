@@ -36,12 +36,14 @@
         </div>
         <span><Icon icon="grommet-icons:download-option" color="white" /></span>
         <span><Icon icon="octicon:people-24" color="white" /></span>
-        <span><Icon icon="uil:comment-notes" color="white" /></span>
+        <router-link :to="{path:'/songcomment?',query:{id:this.$route.query.id,songid:numse[mixin_player.index]}}">
+          <span ><Icon icon="uil:comment-notes" color="white" /></span>
+        </router-link>
         <span><Icon icon="ri:more-fill" color="white" :rotate="1" /></span>
       </div>
 
       <!-- <div class="w-[100vw] border-[1px]"></div> -->
-      <VueSlider :value="mixin_player.progress*100"></VueSlider>
+      <!-- <VueSlider :value="mixin_player.progress*100"></VueSlider> -->
 
 
       <div class="w-[90vw] h-[15vw] ml-[4vw] flex justify-around items-center">
@@ -106,7 +108,6 @@
 <script>
 
 import { getPlaylistTrack } from "@/service";
-import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/default.css'
 export default {
   data() {
@@ -123,38 +124,12 @@ export default {
             value:0
         };
     },
-    components: {
-      VueSlider
-    },
     async created(){
       // console.log(this.$route.query.id);
         const [err,res] = await getPlaylistTrack({id:this.$route.query.id})
         if(err) return console.log(err);
         this.numse = res.data.songs
-        // for (let i = 0; i < this.numse.songs.length; i++) {
-        //         this.tranks.push(this.numse.songs[i].id)
-        //     }
-        //     // console.log(this.numse);
-        //     console.log(this.tranks);
-        // console.log(this.numse);
     },
-    // created(){
-    //   // console.log(this.playinde);
-    //     // console.log(this.$route.query.index);
-    //     this.musongseet = this.songnum
-    //     getPlaylistTrack({id:this.$route.query.id})
-    //     .then((res)=>{
-    //         this.numse = res[1].data
-    //         for (let i = 0; i < this.numse.songs.length; i++) {
-    //             this.tranks.push(this.numse.songs[i].id)
-    //         }
-    //         // console.log(this.numse);
-    //         console.log(this.tranks);
-    //     })
-    //     .catch((err)=>{
-    //         console.log(err)
-    //     })
-    // },
     methods:{
       circulatees(){
         this.circulate = !this.circulate

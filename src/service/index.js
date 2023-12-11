@@ -141,6 +141,6 @@ export const getTrackUrl = (track) => {
 // 音乐评论
 export const postCommentMusic = (data) => co(request.post(`/comment/music?timestamp=${ Date.now()}`,data));
 
-// 音乐评论
+
 export const postSongDetail = (ids) => co(request.get("/song/detail",{params:{ids}}));
 
