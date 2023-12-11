@@ -83,7 +83,7 @@
     </div>
 
     <div class="bg-[#fff] dark:bg-[#151515]  dark:text-[#999] w-[90vw] h-[15vw] ml-[4vw] flex justify-between items-center rounded-[20px]">
-      <div class="flex items-center">
+      <div class="flex items-center"  v-show="!this.auth.anonimousUser">
         <div class=" relative">  
           <img :src="newsongsheet[0].coverImgUrl" v-if="newsongsheet[0]" class="w-[15vw] rounded-[20px] ml-[3vw]">
         </div>
@@ -92,6 +92,18 @@
             {{ newsongsheet[0].name }}
           </span>
           <p class="text-[#999] text-[3vw]" v-if="newsongsheet[0]">{{ newsongsheet[0].trackCount }}首</p>
+        </div>
+        </div>
+
+        <div class="flex items-center"  v-show="this.auth.anonimousUser">
+        <div  class="w-[13vw] h-[13vw] flex justify-center items-center rounded-[20px] bg-[#ccc] ml-[3vw]">  
+          <Icon icon="mdi:heart" color="white" class="text-[5vw]" />
+        </div>
+        <div class="ml-[3vw]">
+          <span class="text-[3vw]">
+            我喜欢的
+          </span>
+          <p class="text-[#999] text-[3vw]">0首</p>
         </div>
         </div>
       <div class="mr-[3vw] w-[18vw] h-[5vw] border-[1px] flex items-center rounded-[20px] text-[3vw] justify-center border-[#333]">
@@ -108,13 +120,14 @@
 
     <div class="bg-[#fff]  dark:bg-[#151515]  dark:text-[#999] w-[90vw] mt-[3vw] ml-[4vw] rounded-[20px]" id="create"> 
       <div class="text-[#999] ml-[3vw]  text-[3vw] flex justify-between items-center h-[5vw] w-[90vw]">
-        <span>创建歌单({{ newsongsheet.length-1 }})</span>
+        <span  v-show="!this.auth.anonimousUser">创建歌单({{ newsongsheet.length-1 }})</span>
+        <span  v-show="this.auth.anonimousUser">创建歌单(0)</span>
         <div class="flex mr-[3vw] text-[5vw]">
           <span><Icon icon="material-symbols-light:add" /></span>
           <Icon icon="ant-design:more-outlined" />
         </div>
       </div>
-      <div v-for="(itemes,index) in newsongsheet" :key="itemes.id" class="">
+      <div v-for="(itemes,index) in newsongsheet" :key="index+1" class="">
         <div class=" ml-[3vw] w-[90vw] h-[15vw] mt-[3vw] flex items-center justify-between" v-if="index>0">
             <div class="flex items-center">
               <img :src="itemes.coverImgUrl" class="w-[15vw] rounded-[20px]">
@@ -159,8 +172,6 @@
         </div>
       </div>
     </div>
-
-    <Music></Music>
     <Footer class=" bg-white"></Footer>
   </div>
 </template>
@@ -182,10 +193,12 @@ export default {
   },
   computed:{...mapState(["auth"])},
   created(){
-    // console.log(this.auth==null);
-      console.log(this.auth.account.id);
-    if (this.auth.anonimousUser ==false) {
-      getUserdetail({ uid:this.auth.account.id})
+      console.log(this.auth.anonimousUser);
+    if (this.auth.anonimousUser) {
+      console.log(111);
+    }else{
+      // console.log(222);
+        getUserdetail({ uid:this.auth.account.id})
      .then((res)=>{
       this.numes = res[1]
       // console.log(res);
