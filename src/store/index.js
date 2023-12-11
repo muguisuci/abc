@@ -28,12 +28,13 @@ const store = new Vuex.Store({
             state.auth = res.data
         },
         deleteCachedData(state) {
-            if (confirm('确定退出吗？')) {
-                state.auth.anonimousUser =true;
-                state.numes =null;
-                state.newseses =null;
-                state.newses =null;
-            }
+            state.auth = {}
+            // if (confirm('确定退出吗？')) {
+            //     state.auth.anonimousUser =true;
+            //     state.numes =null;
+            //     state.newseses =null;
+            //     state.newses =null;
+            // }
         },
         changeDarkMode(state,payload){
             state.isdarkMode = payload
