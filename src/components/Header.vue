@@ -19,7 +19,9 @@
 // import axios from "axios"
 import { mapMutations } from 'vuex';
 export default {
-      ...mapMutations( ['deleteCachedData']),
+      methods:{
+        ...mapMutations( ['deleteCachedData']),
+      }
     
 }
 </script>

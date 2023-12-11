@@ -4,13 +4,13 @@
       <van-cell  @click="showPopup" class="dark:bg-[black]"><Icon icon="ic:baseline-menu" class="text-[5vw] dark:text-[#999]"/></van-cell>
           <van-popup v-model="show" position="left" class="z-500 bg-[#F4F4F4] dark:bg-[black]"  :style="{ height: '100%',width:'93vw' }">
             <div class="w-[93vw] h-[8vw] flex items-center justify-between">
-              <div v-show="!this.auth!=null">
+              <div v-show="!this.auth.anonimousUser">
                 <div class=" flex items-center" v-if="this.auth.profile">
                   <img :src="this.auth.profile.avatarUrl" class="w-[6vw] ml-[3vw] h-[6vw] mr-[2vw] rounded-[50%]">
                   <div class=" dark:text-[#fff]">{{this.auth.profile.nickname}}></div>
                 </div>
               </div>
-              <div v-show="this.auth==null">
+              <div v-show="this.auth.anonimousUser">
                 <router-link to="/login">
                   <div class=" flex items-center">
                     <span class="text-[5vw] mr-[3vw]"><Icon icon="solar:user-circle-bold-duotone" color="#f9dada" /></span>

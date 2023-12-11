@@ -183,8 +183,9 @@ export default {
   computed:{...mapState(["auth"])},
   created(){
     // console.log(this.auth==null);
-      // console.log(this.auth.account.id);
-    getUserdetail({ uid:this.auth.account.id})
+      console.log(this.auth.account.id);
+    if (this.auth.anonimousUser ==false) {
+      getUserdetail({ uid:this.auth.account.id})
      .then((res)=>{
       this.numes = res[1]
       // console.log(res);
@@ -211,6 +212,7 @@ export default {
       .catch((err)=>{
         console.log(err);
      })
+    }
    
   },
 
