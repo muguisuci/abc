@@ -30,7 +30,6 @@ data
 }
 
 
-
 .router-link-active {
     color:red;
 }
