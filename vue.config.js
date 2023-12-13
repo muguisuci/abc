@@ -1,4 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
+const { sentryWebpackPlugin } = require("@sentry/webpack-plugin");
 module.exports = defineConfig({
   transpileDependencies: true,
   // 设置正向代理服务器
@@ -9,10 +10,11 @@ module.exports = defineConfig({
     devtool: "source-map",
     plugins: [
       sentryWebpackPlugin({
-        org: "HOPU",
-        project: "vue-search",
-        authToken:"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"
-      }),
+        // org: "HOPU",
+        project: "wangyi-vue",
+        authToken:
+        "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"
+        }),
     ]
   }
 

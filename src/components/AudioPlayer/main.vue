@@ -71,6 +71,7 @@
 // 通过windown这个全局变量共享,
 // window.player = new Player()
 import { getPlaylistTrack } from "@/service";
+import { mapState } from "vuex";
 export default {
     name:"AudioPlayer",
     data(){
@@ -83,13 +84,14 @@ export default {
             showes:false
         }
     },
+    computed:{...mapState(["songnum"])},
     // created(){
     //     console.log(this.$route.query.id);
     // },
 
     async created(){
-        // console.log(this.$route.query.id);
-        const [err,res] = await getPlaylistTrack({id:this.$route.query.id})
+        console.log(this.songnum);
+        const [err,res] = await getPlaylistTrack({id:this.songnum   })
         if(err) return console.log(err);
         this.numse = res.data.songs
         // console.log(this.numse);

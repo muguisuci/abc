@@ -14,19 +14,21 @@
         <div class="w-[90vw] h-[10vw] mb-[2vw] flex items-center justify-between " v-for="(item,index) in playlist" :key="item.id">
             <!-- <router-link :to="{path:'/sing?',query:{index:index}}"> -->
                 <!-- <div @click="dian(index)"> -->
-                    <div class="text-[4vw] flex items-center" @click="mixin_player.replaceTracks(playlist.map(({id})=>id),playlist.map(({id})=>id)[index])">
-                            <div class="text-[#999] w-[3vw] flex items-center h-[10vw] mr-[3vw]" v-if="index!=mixin_player.index">{{ index+1 }}</div>
-                            <div class="text-[#999] w-[3vw] flex items-center h-[10vw] mr-[3vw]" v-else><img src="https://admirable-jalebi-ce44af.netlify.app/static/wave.gif" style="filter: brightness(50%) saturate(200%);"  class="red-image w-[2vw] h-[2vw]"></div>
-                        
-                        <!-- <div v-show="!trestrue"></div> -->
-                        <div class="ml-[3vw] ">
-                            <div class="truncate  dark:text-[#fff] w-[60vw]" :class="{ 'red-text': index==mixin_player.index }">{{ item.name }}</div>
-                            <div class="text-[2vw] h-[3vw] w-[40vw] flex text-[#999] truncate">
-                                <div class="text-[#bdbd3e] text-[2vw] mr-[1vw] border-[1px] border-[#bdbd3e]">超清母带</div>
-                                <span>{{ item.ar[0].name }} — {{ item.name }}</span>
+                    <div @click="numesss">
+                        <div class="text-[4vw] flex items-center" @click="mixin_player.replaceTracks(playlist.map(({id})=>id),playlist.map(({id})=>id)[index])">
+                                <div class="text-[#999] w-[3vw] flex items-center h-[10vw] mr-[3vw]" v-if="index!=mixin_player.index">{{ index+1 }}</div>
+                                <div class="text-[#999] w-[3vw] flex items-center h-[10vw] mr-[3vw]" v-else><img src="https://admirable-jalebi-ce44af.netlify.app/static/wave.gif" style="filter: brightness(50%) saturate(200%);"  class="red-image w-[2vw] h-[2vw]"></div>
+                            
+                            <!-- <div v-show="!trestrue"></div> -->
+                            <div class="ml-[3vw] ">
+                                <div class="truncate  dark:text-[#fff] w-[60vw]" :class="{ 'red-text': index==mixin_player.index }">{{ item.name }}</div>
+                                <div class="text-[2vw] h-[3vw] w-[40vw] flex text-[#999] truncate">
+                                    <div class="text-[#bdbd3e] text-[2vw] mr-[1vw] border-[1px] border-[#bdbd3e]">超清母带</div>
+                                    <span>{{ item.ar[0].name }} — {{ item.name }}</span>
+                                </div>
                             </div>
-                        </div>
-                    </div> 
+                        </div> 
+                    </div>
                 <!-- </div> -->
             <!-- </router-link> -->
             
@@ -49,7 +51,7 @@ export default {
         return{
             numse:[],
             trestrue:true,
-            num:null,
+            num:null,        
             indexse:0,
             playlist:[]
         }
@@ -57,7 +59,7 @@ export default {
     name:'Song',
     methods:{
         numesss(){
-            this.$store.commit('changeSongnum',this.numid)
+            this.$store.commit('changeSongnum',this.$route.query.id)
         },
         dian(index){
            this.num = index

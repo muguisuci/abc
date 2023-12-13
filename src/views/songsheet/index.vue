@@ -36,8 +36,7 @@
               <div class="text-[#fff] text-center leading-[4vw] rounded-[20px] pr-[3.5vw] text-[2.5vw] px-[2vw] py-[1.25vw]  opacity-50 bg-opacity-20 bg-[#fff]">+关注</div>
             </div>
             <div class="classese w-[15vw] h-[6vw] flex justify-between items-center mt-[2vw]" v-if="numes.algTags">
-              <div v-if="numes.algTags[0]">{{ numes.algTags[0] }}></div>
-              <div  v-if="numes.algTags[1]">{{ numes.algTags[1] }}></div>
+              <div v-for="(itmese,index) in numes.algTags" :key="index+1" class=" text-[2vw]">{{ itmese }}></div>
             </div>
           </div>
         </div>
@@ -107,6 +106,7 @@ export default {
         // console.log('歌单头部数据',playlist);
         this.playlist = playlist
         this.numes =  playlist
+        console.log(this.numes);
 
       const [errse,reses]= await getRelated({id:this.$route.query.id});
       if(errse) return console.log(errse);
