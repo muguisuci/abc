@@ -3,7 +3,7 @@
       <div class="flex"
         :style="{ width: `${this.resource.creatives.length * 80}vw` }">
         <div class="w-[90vw] h-[50vw] mt-[3vw] bg-[#fff]  dark:bg-[#353131] rounded-[20px] mr-[2vw]" v-for="creative in this.resource.creatives" :key="creative.id">
-          <div class="text-[3vw] dark:text-[#fff] ml-[3vw]">
+          <div class="text-[3vw] dark:text-[#fff] mt-[3vw] ml-[3vw]">
             {{ creative.uiElement.mainTitle.title }}>
           </div>
           <div v-for="(resources,index) in creative.resources" :key="resources.id" class="w-[70vw] h-[10vw] ml-[3vw] mt-[3vw] flex justify-between  items-center mb-[2vw]">
@@ -39,7 +39,7 @@ export default {
         },
     },
     created() {
-      console.log(this.resource.creatives);
+      // console.log(this.resource.creatives);
     },
     methods:{
       fatherFn(newStr){

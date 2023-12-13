@@ -1,11 +1,11 @@
 <template>
-  <div class="w-[100vw]">
+  <div class="w-[100vw] mt-[-3vw] rounded-[15px]">
     <van-sticky offset-top="13vw">
-        <div class="flex items-center w-[100vw] h-[10vw] text-[3vw] bg-[#fff] dark:bg-gradient-to-br from-[#486D8D] to-[#6186AB]"  @click="mixin_player.replaceTracks(playlist.map(({id})=>id))">
-            <span><Icon icon="carbon:play-filled" color="red" class="text-[4vw] ml-[3vw] " /></span>
+        <div class="flex items-center w-[100vw] h-[10vw] text-[3vw]  rounded-t-[15px] bg-[#fff] dark:bg-gradient-to-br from-[#486D8D] to-[#6186AB]"  @click="mixin_player.replaceTracks(playlist.map(({id})=>id))">
+            <span><Icon icon="carbon:play-filled" color="red" class="text-[5vw] ml-[3vw] " /></span>
             <div class="dark:text-[#fff] ml-[2vw]" @click="mixin_player.replaceTracks(playlist.map(({id})=>id))">
-                <span class="">播放全部</span>
-                <span class="text-[#ccc] ml-[2vw]" v-if="this.playlist">({{playlist.length }})</span>
+                <span class="text-[4vw]">播放全部</span>
+                <span class="text-[#ccc] ml-[2vw] text-[3vw]" v-if="this.playlist">({{playlist.length }})</span>
             </div>
         </div> 
     </van-sticky>
@@ -82,7 +82,7 @@ export default {
         if(err) return console.log(err);
         // this.numse=res[1].data
         this.playlist = res.data.songs
-        console.log(this.playlist);
+        // console.log(this.playlist);
     }
 }
 </script>

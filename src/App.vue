@@ -26,7 +26,7 @@ data
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
-  background: #F4F4F4;
+  /* background: #F4F4F4; */
 }
 
 

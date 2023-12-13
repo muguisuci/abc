@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[100vw] h-[100vh] bg-[black]" >
+  <div class="w-[100vw] h-[100vh] pb-[12vw] bg-[black]" >
     <div class="z-20 flex flex-col justify-between items-center absolute top-0 left-0 h-[100vh]">
       <div class="w-[90vw] ml-[4vw] flex justify-between items-center">
         <router-link :to="{path:'/songsheet?',query:{id:this.$route.query.id}}">
@@ -15,7 +15,7 @@
         <div class="text-[8vw]"><Icon icon="material-symbols:share-outline" color="white" /></div>
       </div>
 
-      <div class="w-[100vw] h-[80vw] relative">
+      <div class="w-[100vw] h-[120vw] relative top-[5%]">
         <div class=" absolute top-[0] left-[50vw] translate-x-[-50%] z-[10] rotated w-[30vw] h-[40vw]" :style="{ transform: mixin_player.playing ? 'rotate(-10deg)' : 'rotate(-45deg)' }">
           <img src="https://admirable-jalebi-ce44af.netlify.app/static/needle-ab.png" class="h-[40vw] absolute top-[-3.2vw] left-[-3.2vw]">
         </div>
@@ -43,11 +43,11 @@
       </div>
 
       <!-- <div class="w-[100vw] border-[1px]"></div> -->
-      <!-- <VueSlider :value="mixin_player.progress*100"></VueSlider> -->
+      <VueSlider :value="mixin_player.progress*100"></VueSlider>
 
 
       <div class="w-[90vw] h-[15vw] ml-[4vw] flex justify-around items-center">
-        <div @click="circulatees"  class="text-[#fff] text-[8vw]">
+        <div @click="circulatees"  class="text-[#fff] text-[6vw]">
           <Icon icon="teenyicons:loop-solid"  v-show="circulate" />
           <Icon icon="cil:loop-1"  v-show="!circulate" />
         </div>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                    <div class="ml-[3vw] playmusic">
+                    <div class="ml-[3vw]">
                         <div class="w-[90vw] h-[10vw] mb-[2vw] flex items-center justify-between " v-for="(item,index) in numse" :key="item.id">
                             <div class="text-[4vw] flex items-center"  @click="mixin_player.replaceTracks(numse.map(({id})=>id),numse.map(({id})=>id)[index])">
                                     <div class="text-[#999] w-[3vw] flex items-center h-[10vw] mr-[3vw]" v-if="index!=mixin_player.index">{{ index+1 }}</div>
@@ -108,6 +108,7 @@
 <script>
 
 import { getPlaylistTrack } from "@/service";
+import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/default.css'
 export default {
   data() {
@@ -123,6 +124,9 @@ export default {
             show: false,
             value:0
         };
+    },
+    components: {
+      VueSlider
     },
     async created(){
       // console.log(this.$route.query.id);

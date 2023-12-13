@@ -1,11 +1,11 @@
 <template>
   <div class=" mb-[10vw]">
     <div class="flex text-[4vw] mb-[3vw] dark:text-[#fff] items-center justify-between">
-      <div>{{ title }}</div>
+      <div>{{ title }} ></div>
       <div @click="more"><Icon icon="ant-design:more-outlined" /></div>
     </div>
     <div>
-      <div class="wrapper h-[55vw]" ref="wrapper">
+      <div class="wrapper h-[40vw]" ref="wrapper">
         <slot></slot>
       </div>
     </div>

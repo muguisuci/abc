@@ -1,5 +1,5 @@
 <template>
-  <div class="dark:bg-[black]">
+  <div class="bg-[#F4F4F4] dark:bg-[black]">
     <van-sticky class="h-[30vw]">
           <div class="w-[100vw] h-[10vw] dark:bg-[black] flex justify-between items-center text-[4vw] fixed top-0 left-0 bg-[#fff]">
             <Drawer></Drawer>

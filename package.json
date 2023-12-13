@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@better-scroll/core": "^2.5.1",
+    "@sentry/vue": "^7.86.0",
     "axios": "^1.6.2",
     "axios-retry": "^4.0.0",
     "core-js": "^3.8.3",
@@ -26,6 +27,7 @@
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
     "@iconify/vue2": "^2.1.0",
+    "@sentry/webpack-plugin": "^2.10.2",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",

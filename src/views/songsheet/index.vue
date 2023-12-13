@@ -1,10 +1,10 @@
 <template>
   <div class="dark:bg-gradient-to-br from-[#486D8D] to-[#6186AB]">
-    <div class="w-[100vw] h-[60vw] bg-gradient-to-br from-[#486D8D] to-[#6186AB]">
+    <div class="w-[100vw] h-[70vw] bg-gradient-to-br from-[#486D8D] to-[#6186AB]">
       <van-sticky>
         <div class="w-[100vw] h-[13vw] flex items-center justify-between bg-gradient-to-br from-[#486D8D] to-[#6186AB]">
           <div class="h-[5vw] flex items-center justify-between">
-            <router-link  class="text-[4vw]" to="/main"><Icon icon="solar:arrow-left-outline" color="white"/></router-link>
+            <router-link  class="text-[5vw] pl-[3vw]" :to="{path:'/main?',query:{id:this.$route.query.id}}"><Icon icon="solar:arrow-left-outline" color="white"/></router-link>
             <div class="  w-[20vw] text-[#fff] text-[4vw] ml-[3vw]" v-show="!topes">歌单</div>
             <div class="overflow-hidden w-[50vw]">
               <div class="w-[40vw] scrolling-text  text-[#fff] flex items-center text-[4vw] ml-[3vw]" v-show="topes">
@@ -31,9 +31,9 @@
           <div class="w-[50vw]">
             <span class="text-[#fff] text-[3vw]">{{ numes.name }}</span>
             <div class="flex items-center "  v-if="numes.creator">
-              <img :src="numes.creator.avatarUrl" class="w-[5vw] mr-[1vw] h-[5vw] rounded-[50%]">
-              <span class="text-[#ccc] mr-[1vw] text-[2vw]">{{ numes.creator.nickname }}</span>
-              <div class="text-[#fff] w-[8vw] text-center leading-[4vw] rounded-[20px] h-[4vw] text-[2vw] bg-[#ccc]">+关注</div>
+              <img :src="numes.creator.avatarUrl" class="w-[6vw] mr-[1vw] h-[6vw] rounded-[50%]">
+              <span class="text-[#ccc] mr-[1vw] text-[2.8vw]">{{ numes.creator.nickname }}</span>
+              <div class="text-[#fff] text-center leading-[4vw] rounded-[20px] pr-[3.5vw] text-[2.5vw] px-[2vw] py-[1.25vw]  opacity-50 bg-opacity-20 bg-[#fff]">+关注</div>
             </div>
             <div class="classese w-[15vw] h-[6vw] flex justify-between items-center mt-[2vw]" v-if="numes.algTags">
               <div v-if="numes.algTags[0]">{{ numes.algTags[0] }}></div>
@@ -60,25 +60,25 @@
             <Icon icon="icon-park-solid:down-c" v-show="istore" />
             <Icon icon="icon-park-solid:up-c"  v-show="!istore" />
           </div>
-        <div class="text-[2vw] w-[60vw] text-[#ccc] truncate"  v-show="istore">{{ numes.description }}></div>
+        <div class="text-[3vw] text-[#ccc] flex mt-[3vw]"  v-show="istore"><div class="truncate w-[80vw] h-[8vw]">{{ numes.description }}</div>></div>
         <div class="w-[90vw] classes h-[10vw]  flex items-center justify-between">
-          <div class="w-[15vw] rounded-[25px] text-[#fff] h-[5vw] flex justify-center items-center">
-            <Icon icon="majesticons:share" color="white" class="text-[2.5vw] mr-[1vw]" />
-            <span class="text-[2.5vw]">{{ numes.shareCount }}</span>
+          <div class="w-[25vw] rounded-[25px] text-[#fff] h-[10vw] flex justify-center items-center">
+            <Icon icon="majesticons:share" color="white" class="text-[4vw] mr-[1vw]" />
+            <span class="text-[4vw]">{{ numes.shareCount }}</span>
           </div>
-          <div class="w-[15vw] rounded-[25px] text-[#fff] h-[5vw] flex justify-center items-center">
-            <Icon icon="iconamoon:comment-dots-fill" color="white" class="text-[2.5vw] mr-[1vw]" />
-            <span class="text-[2.5vw]">{{ numes.commentCount }}</span>
+          <div class="w-[25vw] rounded-[25px] text-[#fff] h-[10vw] flex justify-center items-center">
+            <Icon icon="iconamoon:comment-dots-fill" color="white" class="text-[4vw] mr-[1vw]" />
+            <span class="text-[4vw]">{{ numes.commentCount }}</span>
           </div>
-          <div class="w-[15vw] rounded-[25px] text-[#fff] h-[5vw] flex justify-center items-center">
-            <Icon icon="bi:collection-fill" color="white" class="text-[2.5vw] mr-[1vw]" />
-            <span class="text-[2.5vw]">{{ numes.subscribedCount }}</span>
+          <div class="w-[25vw] rounded-[25px] text-[#fff] h-[10vw] flex justify-center items-center">
+            <Icon icon="bi:collection-fill" color="white" class="text-[4vw] mr-[1vw]" />
+            <span class="text-[4vw]">{{ numes.subscribedCount }}</span>
           </div>
         </div>
       </div>
     </div>
     
-    <Song :numid="this.$route.query.id" class="z-[-20]"></Song>
+    <Song :numid="this.$route.query.id" class="mt-[-3vw] rounded-[15px]"></Song>
     <!-- <Music class=" fixed bottom-0 left-0"></Music> -->
   </div>
 </template>
@@ -107,25 +107,6 @@ export default {
         // console.log('歌单头部数据',playlist);
         this.playlist = playlist
         this.numes =  playlist
-
-
-
-
-
-
-
-
-
-    // console.log(this.$route.query.id);
-    //  const [err,res]= await getPlaylistDetail({id:this.$route.query.id});
-    //     if(err) return console.log(err);
-    //     this.numes=res.data.playlist
-    //     // console.log(res);
-
-
-    //     const [errves,resves]= await getPlaylistDetail({id:this.$route.query.id});
-    //     if(errves) return console.log(errves);
-    //     this.numes=resves.data.playlist
 
       const [errse,reses]= await getRelated({id:this.$route.query.id});
       if(errse) return console.log(errse);

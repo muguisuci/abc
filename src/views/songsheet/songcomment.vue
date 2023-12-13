@@ -74,12 +74,12 @@ export default {
 
 
     async created(){
-      console.log(this.mixin_player.currentTrackDetail.id);
-      console.log(this.mixin_player.currentTrackDetail);
+      // console.log(this.mixin_player.currentTrackDetail.id);
+      // console.log(this.mixin_player.currentTrackDetail);
         const [err,res] = await postCommentMusic({id:this.mixin_player.currentTrackDetail.id,limit:100})
         if(err) return console.log(err);
         this.songcomment = res.data.comments
-        console.log(this.songcomment);
+        // console.log(this.songcomment);
     }
 }
 </script>

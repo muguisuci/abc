@@ -1,8 +1,8 @@
 <template>
-  <div class=" relative dark:bg-[black]" >
+  <div class=" relative bg-[#F4F4F4] dark:bg-[black]" >
     <Header></Header>
     <Block v-for="block in blocks" :resource="block" @modiflyes="father" :key="block.id"/>
-    <div class="w-[100vw] h-screen fixed bottom-0 left-0 z-30 bges" v-show="isTrue" @click="bloces" :fates="str">
+    <div class="w-[100vw] h-screen mb-[5vw] fixed bottom-0 left-0 z-30 bges" v-show="isTrue" @click="bloces" :fates="str">
       <div class="w-[100vw] h-[43vw] bg-[#fff] opacity-4 absolute bottom-0 left-0 z-30 rounded-t-[40px]">
         <div class="w-[100vw] h-[10vw] border-b flex justify-between items-center">
           <span class="ml-[3vw] text-[#999]">{{ str }}</span>
@@ -21,7 +21,7 @@
 
 
 
-
+    <AudioPlayer class=" fixed bottom-[10vw] left-0"></AudioPlayer>
     <!-- <AudioPlayer></AudioPlayer> -->
     <!-- <Music class=" fixed bottom-[10vw] left-0"></Music> -->
     <Footer class=" bg-white z-20"></Footer>

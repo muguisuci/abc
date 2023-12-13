@@ -33,7 +33,7 @@ export default class {
 // 存放播放列表
     replaceTracks(tracks,autoplayTrack){
         this.tracks=tracks
-        this.index=0
+        // this.index=0
         this.rotation = 0
         // if (autoplay) return 
         // 指定从autoplayTrack开始播放
@@ -85,8 +85,8 @@ export default class {
         // if(!this._howl) return;
         // if(this._howl.playing())return
         this.playing = true
-        this.interval();
         this.duration = this.howl.duration()
+        this.interval();
         this.howl.play()
         readtime = setInterval(() => this.rotation++, 50);
     }
@@ -105,6 +105,7 @@ export default class {
 
     // 获取需要播放的trackid
     playNextTrack(){
+        this.pause()
         // this.rotation = 0
         const nextTrack = this.getNextTrack()
         this.playTrack(nextTrack)
@@ -113,7 +114,7 @@ export default class {
     getNextTrack(){
         if(this.loopMode==1) return this.tracks[this.index]
         const currentTrackIsLast=this.index+1==this.tracks.length
-        if(currentTrackIsLast&&this.loopMode==0) return this.tracks[this.index=0]
+        if(currentTrackIsLast&&this.loopMode==0) return this.tracks[(this.index=0)]
         return this.tracks[++this.index]
     }
     // 上一曲
@@ -124,11 +125,12 @@ export default class {
 
     getPreviousTrack(){
         if(this.loopMode==1) return this.tracks[this.index]
-        const currentTrackIsFirst=this.index==0
-        if(currentTrackIsFirst&&this.loopMode==0) return this.tracks[this.index]
+        const currentTrackIsFirst=this.index-1<0
+        if(currentTrackIsFirst&&this.loopMode==0) return this.tracks[(this.index = this.tracks.length)]
         return this.tracks[--this.index]
     }
 
+    
 
     setRate(rate){
         Howler.rate=rate

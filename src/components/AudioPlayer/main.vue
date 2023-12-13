@@ -19,7 +19,7 @@
                 <!-- {{numse.songs[playinde].name}}-{{ numse.songs[playinde].ar[0].name }} -->
             </div>
         </div>
-        <div class="w-[15vw]  h-[12vw] mr-[4vw] flex justify-between items-center ">
+        <div class="w-[20vw]  h-[12vw] mr-[4vw] flex justify-between items-center ">
             <!-- <div @click="toggleRotation" > -->
                 <div class="relative w-[6vw] h-[6vw]" @click="mixin_player.toggle()">
                     <van-circle :value="mixin_player.progress*100" size="6vw" :speed="100" />
@@ -28,15 +28,15 @@
                     :icon="mixin_player.playing ?'lets-icons:stop-fill':'fluent:play-12-filled'" />
                 </div>
             <!-- </div> -->
-            <van-cell @click="showPopup"><span class="text-[4vw] text-[#3b4152]"><Icon icon="iconamoon:playlist-bold" /></span></van-cell>
+            <van-cell @click="showPopup"><span class="text-[6vw] text-[#3b4152]"><Icon icon="iconamoon:playlist-bold" /></span></van-cell>
                 <van-popup v-model="show" round position="bottom" style="height: 60%;">
-                    <div class="playmusic py-[6vw]">
-                        <div class="text-[4vw] bg-[#fff] h-[13vw] flex justify-center items-center">
+                    <div class="playmusic  py-[6vw]">
+                        <div class="text-[4vw] bg-[#fff] h-[13vw]  z-20  flex justify-center items-center">
                             当前播放<span class="text-[#ccc]">({{ numse.length }})</span>
                         </div>
                     </div>
 
-                    <div class="ml-[3vw] playmusic">
+                    <div class="ml-[3vw]">
                         <div class="w-[90vw] h-[10vw] mb-[2vw] flex items-center justify-between " v-for="(item,index) in numse" :key="item.id">
                             <div class="text-[4vw] flex items-center"  @click="mixin_player.replaceTracks(numse.map(({id})=>id),numse.map(({id})=>id)[index])">
                                     <div class="text-[#999] w-[3vw] flex items-center h-[10vw] mr-[3vw]" v-if="index!=mixin_player.index">{{ index+1 }}</div>
@@ -88,11 +88,11 @@ export default {
     // },
 
     async created(){
-        console.log(this.$route.query.id);
+        // console.log(this.$route.query.id);
         const [err,res] = await getPlaylistTrack({id:this.$route.query.id})
         if(err) return console.log(err);
         this.numse = res.data.songs
-        console.log(this.numse);
+        // console.log(this.numse);
     },
     methods:{
         showPopup() {

@@ -59,5 +59,10 @@ export default [
         name:'songcomment',
         component: ()=>import("@/views/songsheet/songcomment"),
     },
+    {
+        path:'/search',
+        name:'search',
+        component: ()=>import("@/views/search"),
+    },
     
 ]
