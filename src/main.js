@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import * as Sentry from "@sentry/vue";
 import router from '@/router'
 import store from '@/store'
 import "@/assets/main.css"
@@ -10,6 +9,7 @@ import Header from "@/components/Header"
 import Drawer from "@/components/Drawer"
 import Music from "@/components/Music"
 import Vant from "vant"
+import * as Sentry from "@sentry/vue";
 // import player from '@/components/AudioPlayer/player'
 import { IndexAnchor,IndexBar,NoticeBar,Sticky,ActionSheet,Popup,Switch,Circle,Popover   } from 'vant'
 
@@ -46,9 +46,10 @@ Vue.component('Music',Music)
 Vue.config.productionTip = false
 
 
+
 Sentry.init({
   Vue,
-  dsn: "https://4581aa878c696e61652a9baa13d13298@o4506386935775232.ingest.sentry.io/4506386999083008",
+  dsn: "https://385133105f67c0b1ea55da8a9de91426@o4506386935775232.ingest.sentry.io/4506387510001664",
   integrations: [
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.vueRouterInstrumentation(router),
@@ -59,6 +60,9 @@ Sentry.init({
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 });
+
+
+
 
 
 
